@@ -8,12 +8,15 @@
     <Version>1.0.0</Version>
     <Authors>DCoats</Authors>
     <Company>Functionairy</Company>
-    <Copyright>Copyright (c) Functionairy 2025</Copyright>
-    <Description>Basic types library for the F10Y.L0005 .NET Standard 2.1 platform library.</Description>
+    <Copyright>Copyright © Functionairy 2025</Copyright>
+    <Description>Dependency-injection infrastructure sub-library for the .NET Standard 2.1 platform library.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/Functionairy/F10Y.L0005.git</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\F10Y.T0004\source\F10Y.T0004\F10Y.T0004.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0000\source\F10Y.L0000\F10Y.L0000.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.NG0008\source\F10Y.NG0008\F10Y.NG0008.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.T0016\source\F10Y.T0016\F10Y.T0016.csproj" />
   </ItemGroup>
 </Project>
