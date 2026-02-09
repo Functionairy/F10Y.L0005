@@ -18,6 +18,11 @@ namespace F10Y.L0005.L002
     [FunctionsMarker]
     public partial interface IServicesOperator
     {
+        TService Get_Service<TService>(
+            IServiceProvider serviceProvider,
+            ServiceToken<TService> serviceToken)
+            => serviceProvider.GetRequiredService<TService>();
+
         TService Get_Service<TService>(IServiceProvider serviceProvider)
             => serviceProvider.GetRequiredService<TService>();
 

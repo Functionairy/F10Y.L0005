@@ -16,6 +16,39 @@ namespace F10Y.L0005.L002
         ServiceProvider Build_ServiceProvider(IServiceCollection services)
             => services.BuildServiceProvider();
 
+        void Configure_ServiceCollection(
+            ServiceCollection services,
+            IEnumerable<Action<IServiceCollection>> configurations)
+        {
+            foreach (var servicesConfigurationAction in configurations)
+            {
+                servicesConfigurationAction(services);
+            }
+        }
+
+        void Configure_ServiceCollection(
+            ServiceCollection services,
+            params Action<IServiceCollection>[] configurations)
+            => this.Configure_ServiceCollection(
+                services,
+                configurations.AsEnumerable());
+
+        ServiceCollection Configure_ServiceCollection(
+            IEnumerable<Action<IServiceCollection>> configurations)
+        {
+            var output = this.New();
+
+            this.Configure_ServiceCollection(
+                output,
+                configurations);
+
+            return output;
+        }
+
+        ServiceCollection Configure_ServiceCollection(
+            params Action<IServiceCollection>[] configurations)
+            => this.Configure_ServiceCollection(configurations.AsEnumerable());
+
         async Task<ServiceProvider> Configure_ServiceProvider(
             IEnumerable<Func<IServiceCollection, Task>> servicesConfigurationActions)
         {
@@ -38,12 +71,7 @@ namespace F10Y.L0005.L002
         ServiceProvider Configure_ServiceProvider(
             IEnumerable<Action<IServiceCollection>> servicesConfigurationActions)
         {
-            var serviceCollection = this.New();
-
-            foreach (var servicesConfigurationAction in servicesConfigurationActions)
-            {
-                servicesConfigurationAction(serviceCollection);
-            }
+            var serviceCollection = this.Configure_ServiceCollection(servicesConfigurationActions);
 
             var output = serviceCollection.BuildServiceProvider();
             return output;
