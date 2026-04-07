@@ -13,6 +13,11 @@ namespace F10Y.L0005.L002
     [FunctionsMarker]
     public partial interface IServiceCollectionOperator
     {
+        void Add_Singleton<TServiceDefinition, TServiceImplementation>(IServiceCollection services)
+            where TServiceDefinition : class
+            where TServiceImplementation : class, TServiceDefinition
+            => services.AddSingleton<TServiceDefinition, TServiceImplementation>();
+
         ServiceProvider Build_ServiceProvider(IServiceCollection services)
             => services.BuildServiceProvider();
 
