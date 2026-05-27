@@ -18,6 +18,14 @@ namespace F10Y.L0005.L003
 #pragma warning restore IDE1006 // Naming Styles
 
 
+        Exception Get_NoHandlerSuiteFoundForDescriptorTypeException(string implementationType_TypeName)
+        {
+            var message = Instances.ExceptionMessageOperator.Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage(implementationType_TypeName);
+
+            var output = this.From(message);
+            return output;
+        }
+
         Exception Get_NoHandlerSuiteFoundForDescriptorTypeException<TDescriptor>(TDescriptor descriptor)
         {
             var message = Instances.ExceptionMessageOperator.Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage(descriptor);
