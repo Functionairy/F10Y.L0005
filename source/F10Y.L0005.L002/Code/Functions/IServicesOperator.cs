@@ -26,6 +26,9 @@ namespace F10Y.L0005.L002
         TService Get_Service<TService>(IServiceProvider serviceProvider)
             => serviceProvider.GetRequiredService<TService>();
 
+        TService Get_Service_OrDefault<TService>(IServiceProvider serviceProvider)
+            => serviceProvider.GetService<TService>();
+
         void In_ServiceContext<TService>(
             IServiceProvider serviceProvider,
             Action<TService> action)
@@ -45,7 +48,7 @@ namespace F10Y.L0005.L002
             return output;
         }
 
-        async Task<TOut> In_ServiceContext<TService, TOut>(
+        async Task<TOut> In_ServiceContext_Asynchronous<TService, TOut>(
             IServiceProvider serviceProvider,
             Func<TService, Task<TOut>> function)
         {
@@ -54,6 +57,13 @@ namespace F10Y.L0005.L002
             var output = await function(service);
             return output;
         }
+
+        Task<TOut> In_ServiceContext<TService, TOut>(
+            IServiceProvider serviceProvider,
+            Func<TService, Task<TOut>> function)
+            => this.In_ServiceContext_Asynchronous(
+                serviceProvider,
+                function);
 
         void In_ServiceContext<TService>(
             IServiceProvider serviceProvider,

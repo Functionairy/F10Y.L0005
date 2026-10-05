@@ -6,6 +6,12 @@ using F10Y.T0002;
 
 namespace F10Y.L0005.L003.TypeNameBased
 {
+    /// <summary>
+    /// Provides typename-based functions for handler suite lookup.
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </remarks>
     [FunctionsMarker]
     public partial interface IHandlerSuiteOperator
     {

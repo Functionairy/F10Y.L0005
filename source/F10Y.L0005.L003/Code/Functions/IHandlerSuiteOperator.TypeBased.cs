@@ -9,6 +9,12 @@ using F10Y.L0005.T001;
 
 namespace F10Y.L0005.L003.TypeBased
 {
+    /// <summary>
+    /// Provides type-based methods for handler suite lookup.
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </remarks>
     [FunctionsMarker]
     public partial interface IHandlerSuiteOperator
     {

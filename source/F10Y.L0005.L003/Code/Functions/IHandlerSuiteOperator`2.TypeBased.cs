@@ -9,6 +9,9 @@ namespace F10Y.L0005.L003.TypeBased
     /// <inheritdoc cref="IHandlerSuiteOperator" path="/summary"/>
     /// <remarks>
     /// Provides the the value of the <see cref="HandlerSuites_ByHandledImplementationType"/> property to methods inherited from <see cref="IHandlerSuiteOperator"/>.
+    /// <para>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </para>
     /// </remarks>
     [FunctionsMarker]
     public partial interface IHandlerSuiteOperator<THandled, THandlerSuite> :

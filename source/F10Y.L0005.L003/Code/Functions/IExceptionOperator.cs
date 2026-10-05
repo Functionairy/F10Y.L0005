@@ -6,6 +6,12 @@ using F10Y.T0011;
 
 namespace F10Y.L0005.L003
 {
+    /// <summary>
+    /// Exceptions for use in handler suite machinery.
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </remarks>
     [FunctionsMarker]
     public partial interface IExceptionOperator :
         L0000.IExceptionOperator

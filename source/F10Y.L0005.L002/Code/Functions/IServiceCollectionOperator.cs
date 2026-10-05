@@ -10,6 +10,12 @@ using F10Y.T0002;
 
 namespace F10Y.L0005.L002
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </remarks>
     [FunctionsMarker]
     public partial interface IServiceCollectionOperator
     {
@@ -18,74 +24,58 @@ namespace F10Y.L0005.L002
             where TServiceImplementation : class, TServiceDefinition
             => services.AddSingleton<TServiceDefinition, TServiceImplementation>();
 
+        /// <inheritdoc cref="ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection)"/>
         ServiceProvider Build_ServiceProvider(IServiceCollection services)
-            => services.BuildServiceProvider();
+            => Instances.ServiceProviderOperator.Build_ServiceProvider(services);
 
         void Configure_ServiceCollection(
-            ServiceCollection services,
-            IEnumerable<Action<IServiceCollection>> configurations)
+            IServiceCollection services,
+            IEnumerable<Action<IServiceCollection>> configures)
         {
-            foreach (var servicesConfigurationAction in configurations)
+            foreach (var servicesConfigurationAction in configures)
             {
                 servicesConfigurationAction(services);
             }
         }
 
         void Configure_ServiceCollection(
-            ServiceCollection services,
-            params Action<IServiceCollection>[] configurations)
+            IServiceCollection services,
+            params Action<IServiceCollection>[] configures)
             => this.Configure_ServiceCollection(
                 services,
-                configurations.AsEnumerable());
+                configures.AsEnumerable());
 
         ServiceCollection Configure_ServiceCollection(
-            IEnumerable<Action<IServiceCollection>> configurations)
+            IEnumerable<Action<IServiceCollection>> configures)
         {
             var output = this.New();
 
             this.Configure_ServiceCollection(
                 output,
-                configurations);
+                configures);
 
             return output;
         }
 
         ServiceCollection Configure_ServiceCollection(
-            params Action<IServiceCollection>[] configurations)
-            => this.Configure_ServiceCollection(configurations.AsEnumerable());
-
-        async Task<ServiceProvider> Configure_ServiceProvider(
-            IEnumerable<Func<IServiceCollection, Task>> servicesConfigurationActions)
-        {
-            var serviceCollection = this.New();
-
-            foreach (var servicesConfigurationAction in servicesConfigurationActions)
-            {
-                await servicesConfigurationAction(serviceCollection);
-            }
-
-            var output = serviceCollection.BuildServiceProvider();
-            return output;
-        }
+            params Action<IServiceCollection>[] configures)
+            => this.Configure_ServiceCollection(configures.AsEnumerable());
 
         Task<ServiceProvider> Configure_ServiceProvider(
-            params Func<IServiceCollection, Task>[] servicesConfigurationActions)
-            => this.Configure_ServiceProvider(
-                servicesConfigurationActions.AsEnumerable());
+            IEnumerable<Func<IServiceCollection, Task>> configures)
+            => Instances.ServiceProviderOperator.Configure_ServiceProvider(configures);
+
+        Task<ServiceProvider> Configure_ServiceProvider(
+            params Func<IServiceCollection, Task>[] configures)
+            => Instances.ServiceProviderOperator.Configure_ServiceProvider(configures);
 
         ServiceProvider Configure_ServiceProvider(
-            IEnumerable<Action<IServiceCollection>> servicesConfigurationActions)
-        {
-            var serviceCollection = this.Configure_ServiceCollection(servicesConfigurationActions);
-
-            var output = serviceCollection.BuildServiceProvider();
-            return output;
-        }
+            IEnumerable<Action<IServiceCollection>> configures)
+            => Instances.ServiceProviderOperator.Configure_ServiceProvider(configures);
 
         ServiceProvider Configure_ServiceProvider(
-            params Action<IServiceCollection>[] servicesConfigurationActions)
-            => this.Configure_ServiceProvider(
-                servicesConfigurationActions.AsEnumerable());
+            params Action<IServiceCollection>[] configures)
+            => Instances.ServiceProviderOperator.Configure_ServiceProvider(configures);
 
         public TService Get_Service<TService>(IServiceProvider serviceProvider)
             => serviceProvider.GetRequiredService<TService>();

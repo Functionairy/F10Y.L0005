@@ -7,6 +7,10 @@ using F10Y.T0011;
 
 namespace F10Y.L0005
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
     [FunctionsMarker]
     public partial interface ICharacterOperator :
         L0000.ICharacterOperator
@@ -14,12 +18,12 @@ namespace F10Y.L0005
 #pragma warning disable IDE1006 // Naming Styles
 
         [Ignore]
-        public L0000.ICharacterOperator _L0000 => L0000.CharacterOperator.Instance;
+        L0000.ICharacterOperator _L0000 => L0000.CharacterOperator.Instance;
 
 #pragma warning restore IDE1006 // Naming Styles
 
 
-        public string Display(char character)
+        string Display(char character)
         {
             return character switch
             {
@@ -31,7 +35,7 @@ namespace F10Y.L0005
             };
         }
 
-        public string DisplayCharacters(string @string)
+        string DisplayCharacters(string @string)
         {
             var output = @string
                 .Select(this.Display)
