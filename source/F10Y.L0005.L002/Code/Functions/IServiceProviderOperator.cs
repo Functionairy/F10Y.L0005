@@ -45,6 +45,11 @@ namespace F10Y.L0005.L002
             return output;
         }
 
+        ServiceProvider Configure_ServiceProvider_Synchronous(
+            params Action<IServiceCollection>[] configures)
+            => this.Configure_ServiceProvider_Synchronous(
+                configures.AsEnumerable());
+
         ServiceProvider Configure_ServiceProvider(
             IEnumerable<Action<IServiceCollection>> configures)
             => this.Configure_ServiceProvider_Synchronous(configures);

@@ -77,6 +77,9 @@ namespace F10Y.L0005.L002
             params Action<IServiceCollection>[] configures)
             => Instances.ServiceProviderOperator.Configure_ServiceProvider(configures);
 
+        Action<IServiceCollection>[] From(params Action<IServiceCollection>[] configures)
+            => configures;
+
         public TService Get_Service<TService>(IServiceProvider serviceProvider)
             => serviceProvider.GetRequiredService<TService>();
 

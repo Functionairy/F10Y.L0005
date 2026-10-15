@@ -8,11 +8,21 @@ using F10Y.T0016;
 
 namespace F10Y.L0005.L002
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </remarks>
     [FunctionsMarker]
     public partial interface IServiceOperations
     {
         Action<IServiceCollection> Add_ServiceCollection(out ServiceToken<IServiceCollection> serviceCollection_Token)
             => services => services.AddSingleton(services);
+
+        Action<IServiceCollection> Add_Singleton<TService>()
+            where TService : class
+            => services => services.AddSingleton<TService>();
 
         Action<IServiceCollection> Add_Singleton<TDefinition, TImplementation>()
             where TDefinition : class
