@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Main">
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <NoWarn>CS1573;CS1587;CS1591;IDE0130</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Label="Package">
+    <Version>1.0.0</Version>
+    <Authors>DCoats</Authors>
+    <Company>Functionairy</Company>
+    <Copyright>Copyright © Functionairy 2025</Copyright>
+    <Description>Cross-platform functionality library for the F10Y.L0005 netstandard2.1 platform library.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/Functionairy/F10Y.L0005.git</RepositoryUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\F10Y.L0000\source\F10Y.L0000\F10Y.L0000.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0019\source\F10Y.L0019\F10Y.L0019.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0032\source\F10Y.L0032\F10Y.L0032.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0041\source\F10Y.L0041\F10Y.L0041.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0043\source\F10Y.L0043\F10Y.L0043.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.T0014\source\F10Y.T0014.T001\F10Y.T0014.T001.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0004\source\F10Y.L0004.L001\F10Y.L0004.L001.csproj" />
+  </ItemGroup>
+</Project>
